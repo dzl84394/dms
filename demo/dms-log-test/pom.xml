@@ -30,8 +30,12 @@
 
 		<dependency>
 			<groupId>com.dails</groupId>
+			<artifactId>dails-plugins-base</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.dails</groupId>
 			<artifactId>dails-plugins-log</artifactId>
-			<version>0.0.1</version>
 		</dependency>
 
 
