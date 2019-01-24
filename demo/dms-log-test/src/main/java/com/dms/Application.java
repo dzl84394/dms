@@ -9,6 +9,11 @@ import org.springframework.context.annotation.ComponentScan;
 public class Application {
 
     public static void main(String[] args) {
+    	
+    	System.err.println(">>>>>>>>>>>>>>Application11111111111");
         SpringApplication.run(Application.class, args);
+
+
+    	System.err.println(">>>>>>>>>>>>>>Application2222222222");
     }
 }

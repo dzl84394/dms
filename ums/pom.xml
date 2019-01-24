@@ -1,0 +1,17 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.dms</groupId>
+  <artifactId>dms-ums</artifactId>
+  <version>0.0.1</version>
+  <packaging>pom</packaging>
+  <description>用户管理中心user message centor</description>
+  <modules>
+  	<module>dms-ums-order</module>
+  	<module>dms-ums-pay</module>
+  	<module>dms-ums-member</module>
+  	<module>dms-ums-account</module>
+  	<module>dms-ums-contract</module>
+  	<module>dms-ums-delivery</module>
+  	<module>dms-ums-metadata</module>
+  </modules>
+</project>
