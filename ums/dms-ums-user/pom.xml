@@ -4,22 +4,19 @@
 	xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-
-
 	<parent>
 		<groupId>com.dms</groupId>
 		<artifactId>dms-ums</artifactId>
 		<version>0.0.1</version>
 	</parent>
-
-
-	<artifactId>dms-ums-server</artifactId>
-	<packaging>war</packaging>
-	<name>dms-ums-server Maven Webapp</name>
+	<groupId>com.dms</groupId>
+	<artifactId>dms-ums-user</artifactId>
+	<version>0.0.1</version>
+	<name>dms-ums-user</name>
 	<url>http://maven.apache.org</url>
-
-
-
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -27,18 +24,24 @@
 			<scope>test</scope>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
-		<!-- 用于注册中心访问账号认证 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
 	</dependencies>
+	
+	
 	<build>
-		<finalName>dms-ums-server</finalName>
-	</build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
