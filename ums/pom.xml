@@ -48,6 +48,7 @@
 		<module>dms-ums-checkAccount</module>
 		<!-- 推送消息 -->
 		<module>dms-ums-message</module>
+		<module>dms-ums-sale</module>
 	</modules>
 	<dependencies>
 
