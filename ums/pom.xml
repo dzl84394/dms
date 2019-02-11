@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.dms</groupId>
 	<artifactId>dms-ums</artifactId>
@@ -12,7 +14,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.3.RELEASE</version>
-		<relativePath/>
+		<relativePath />
 	</parent>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,19 +24,31 @@
 	</properties>
 
 	<modules>
+	<module>dms-ums-server</module>
+		<!-- 订单 -->
 		<module>dms-ums-order</module>
+		<!-- 支付 -->
 		<module>dms-ums-pay</module>
+		<!-- 会员 -->
 		<module>dms-ums-member</module>
+		<!-- 账户 -->
 		<module>dms-ums-account</module>
+		<!-- 合约 -->
 		<module>dms-ums-contract</module>
+		<!-- 交付 -->
 		<module>dms-ums-delivery</module>
+
+		<!-- 元数据 -->
 		<module>dms-ums-metadata</module>
-		<module>dms-ums-server</module>
+		
+		<!-- 用户 -->
 		<module>dms-ums-user</module>
-    <module>dms-ums-balance</module>
-    <module>dms-ums-checkAccount</module>
-    <module>dms-ums-ring</module>
-  </modules>
+
+		<!-- 对账 -->
+		<module>dms-ums-checkAccount</module>
+		<!-- 推送消息 -->
+		<module>dms-ums-message</module>
+	</modules>
 	<dependencies>
 
 
