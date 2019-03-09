@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+import org.joda.time.DateTime;
+
 public class DateTest {
 	
 
@@ -20,5 +22,9 @@ public class DateTest {
 		Clock clock = Clock.systemDefaultZone();
 		Instant instant = Instant.now();
 		
+		
+		String day = new DateTime(System.currentTimeMillis()-24*60*60*1000).toString("yyyyMMdd");
+		
+		System.err.println(day);
 	}
 }

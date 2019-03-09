@@ -1,13 +1,14 @@
 package com.dms.test;
 
+import lombok.Data;
+
 /**
  * Hello world!
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-    }
+@Data
+public class App {
+
+
+	private String name;
 }
