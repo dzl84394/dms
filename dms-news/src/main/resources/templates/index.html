@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet" href="/static/bootstrap3.3.0/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/static/bootstrap3.3.0/dist/css/bootstrap-markdown.min.css" />
+<link rel="stylesheet" href="/static/bootstrap3.3.0/dist/css/bootstrap-theme.min.css" />
+
+<link rel="stylesheet" href="/static/bootstrap3.3.0/dist/css/blog.css" />
+
+<script type="text/javascript" src="/static/bootstrap3.3.0/dist/js/jquery-3.2.1.min.js"></script>
+
+
+<script type="text/javascript" src="/static/utils/util.js"></script>
+<script type="text/javascript" src="/static/utils/select.js"></script>
+<script type="text/javascript" src="/static/utils/pagination.js"></script>
+<!-- <script type="text/javascript" src="/static/utils/test.js"></script> -->
+<title>读书客</title>
+
+</head>
+<body>
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:fragment="header">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+					data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" th:href="@{/}">新闻管理</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a th:href="@{/}">Home</a></li>
+
+
+					<li><a th:href="@{/user}">用户管理</a></li>
+					<li><a th:href="@{/news}">新闻录入</a></li>
+					
+					<li><a th:href="@{/category}">管理</a></li>
+					
+				</ul>
+				<ul class="nav navbar-nav navbar-right" sec:authorize="isAuthenticated()">
+					<li class="active">
+						<a th:href="@{/settings/profile}">
+							个人中心-<span th:text='${session.currentUser.item.name}'></span>
+							<span class="sr-only">(current)</span>
+						</a>
+					</li>
+					<li>
+						<a th:href="@{/logout}">Sign Out</a>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right" sec:authorize="isAnonymous()">
+					
+					<li><a
+					th:href="@{/login}">登 录 </a></li>
+				</ul>
+
+
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+
+
+	<div class="container">
+
+		<!-- Jumbotron -->
+		<div class="jumbotron">
+			<h1>读书客</h1>
+			<p class="lead">知识的价值不在于占有，而在于使用。</p>
+		</div>
+
+		<!-- Example row of columns -->
+		<div class="row">
+			<div class="col-lg-4">
+				<h2>项目立项</h2>
+				<p class="text-danger">
+					<a href="/tssbs">
+						<code>唐诗三百首</code>
+					</a>
+					<a href="scsbs">
+						<code>宋词三百首</code>
+					</a>
+					<br />
+					<a th:href="@{scsbs}">
+						<code>李白</code>
+					</a>
+					<a href="scsbs">
+						<code>杜甫</code>
+					</a>
+					<a href="scsbs">
+						<code>毛泽东诗词</code>
+					</a>
+				</p>
+				<p>
+					<a class="btn btn-primary" href="/shi" role="button">更多 &raquo;</a>
+				</p>
+			</div>
+			<div class="col-lg-4">
+				<h2>
+					<a href="/rk">项目筹备</a>
+				</h2>
+				<p class="text-danger">
+					<a href="/xtjcgl">
+						<code>系统集成项目管理工程师</code>
+					</a>
+					<a href="/xtjgsj">
+						<code>系统架构设计师</code>
+					</a>
+				</p>
+				<p>
+					<a class="btn btn-primary" href="/rk" role="button">更多 &raquo;</a>
+				</p>
+			</div>
+
+
+			<div class="col-lg-4">
+				<h2>团队建设</h2>
+				<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+					Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo,
+					tortor mauris condimentum nibh, ut fermentum massa.</p>
+				<p>
+					<a class="btn btn-primary" href="#" role="button">更多 &raquo;</a>
+				</p>
+			</div>
+
+			<div class="col-lg-4">
+				<h2>进度管理</h2>
+				<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+					Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo,
+					tortor mauris condimentum nibh, ut fermentum massa.</p>
+				<p>
+					<a class="btn btn-primary" href="#" role="button">View details &raquo;</a>
+				</p>
+			</div>
+<div class="col-lg-4">
+				<h2>风险管理</h2>
+				<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+					Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo,
+					tortor mauris condimentum nibh, ut fermentum massa.</p>
+				<p>
+					<a class="btn btn-primary" href="#" role="button">View details &raquo;</a>
+				</p>
+			</div>
+			<div class="col-lg-4">
+				<h2>收尾管理</h2>
+				<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+					Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo,
+					tortor mauris condimentum nibh, ut fermentum massa.</p>
+				<p>
+					<a class="btn btn-primary" href="#" role="button">View details &raquo;</a>
+				</p>
+			</div>
+		</div>
+
+
+	</div>
+
+	<div class="blog-footer navbar-fixed-bottom" th:fragment="footer">
+		<div class="container">
+			<p>CopyRight 2018</p>
+		</div>
+	</div>
+</body>
+</html>

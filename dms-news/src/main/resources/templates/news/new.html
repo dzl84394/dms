@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="index::head">
+
+</head>
+
+<body role="document">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="index::header"></nav>
+
+
+	<div class="container-fluid">
+
+
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar" th:include="news/sidebar::sidebar"></div>
+
+
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+				<div class="blog-header">
+					<h3 class="blog-title">news 添加</h3>
+				</div>
+
+				<div class="row">
+
+					<div th:fragment="newsForm">
+
+						<form id="newsForm" th:action="@{/news/save}" th:method="post" th:object="${obj}"
+							class="form-horizontal">
+							<input type="hidden" class="form-control" name="id" id="id" th:value="${obj.id}" />
+							<input type="hidden" class="form-control" name="writerId" id="writerId" th:value="${obj.writerId}" />
+							<input type="hidden" class="form-control" name="writerName" id="writerName" th:value="${obj.writerName}" />
+							
+
+							<div class='form-group col-lg-8'>
+								<label for='categoryId' class='col-sm-2 control-label'>新闻类别</label>
+								<div class='col-sm-4'>
+									<select id="categoryId" class="form-control" name="categoryId" th:value="${obj.categoryId}">
+									</select>
+								</div>
+								<div class='col-sm-4'>
+									<select id="category2Id" class="form-control" name="category2Id" th:value="${obj.category2Id}">
+									</select>
+								</div>
+							</div>
+
+
+							<div class='form-group col-lg-4'>
+								<label for='departmentId' class='col-sm-4 control-label'>所属单位</label>
+								<div class='col-sm-8'>
+									<select id="departmentId" class="form-control" name="departmentId"
+										th:value="${obj.departmentId}">
+									</select>
+
+								</div>
+							</div>
+
+
+							<div class='form-group col-lg-4'>
+								<label for='authorName' class='col-sm-4 control-label'>作者</label>
+								<div class='col-sm-8'>
+									<input type='text' class='form-control' name='authorName' id='authorName'
+										th:value='${obj.authorName}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-4'>
+								<label for='cameramanName' class='col-sm-4 control-label'>摄影</label>
+								<div class='col-sm-8'>
+									<input type='text' class='form-control' name='cameramanName' id='cameramanName'
+										th:value='${obj.cameramanName}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-4'>
+								<label for='departmentName' class='col-sm-4 control-label'>落款单位</label>
+								<div class='col-sm-8'>
+									<input type='text' class='form-control' name='departmentName' id='departmentName'
+										th:value='${obj.departmentName}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-4'>
+								<label for='pubWhere' class='col-sm-4 control-label'>引用来源</label>
+								<div class='col-sm-8'>
+									<input type='text' class='form-control' name='pubWhere' id='pubWhere'
+										th:value='${obj.pubWhere}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-4'>
+								<label for='pubUrl' class='col-sm-4 control-label'>引用来源Url</label>
+								<div class='col-sm-8'>
+									<input type='text' class='form-control' name='pubUrl' id='pubUrl' th:value='${obj.pubUrl}' />
+								</div>
+							</div>
+
+
+
+
+							<div class='form-group col-lg-12'>
+								<label for='title' class='col-sm-2 control-label'>标题</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='title' id='title' th:value='${obj.title}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='bottomTitle' class='col-sm-2 control-label'>副标题</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='bottomTitle' id='bottomTitle'
+										th:value='${obj.bottomTitle}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='upTitle' class='col-sm-2 control-label'>肩标题</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='upTitle' id='upTitle'
+										th:value='${obj.upTitle}' />
+								</div>
+							</div>
+
+							<div class='form-group col-lg-12'>
+								<label for='keywords' class='col-sm-2 control-label'>关键字</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='keywords' id='keywords'
+										th:value='${obj.keywords}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='body' class='col-sm-2 control-label'>正文</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='body' id='body' th:value='${obj.body}' />
+								</div>
+							</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							<div class='form-group col-lg-12'>
+								<div class="col-sm-3">
+									<div class="checkbox">
+										<label> <input type="checkbox" name='onEnglish' id='onEnglish'
+												th:checked="${obj.onEnglish}" /> 是否是英文
+										</label>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="checkbox">
+										<label> <input type="checkbox" name='onImportantNews' id='onImportantNews'
+												th:checked='${obj.onImportantNews}' /> 是否是要闻
+										</label>
+									</div>
+								</div>
+
+								<div class="col-sm-3">
+									<div class="checkbox">
+										<label> <input type="checkbox" name='onIndex' id='onIndex'
+												th:checked='${obj.onIndex}' /> 是否首页
+										</label>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="checkbox">
+										<label> <input type="checkbox" name='onTop' id='onTop' th:checked='${obj.onTop}' />
+											是否头条
+										</label>
+									</div>
+								</div>
+
+							</div>
+
+
+
+
+
+
+
+
+							<div class='form-group col-lg-12'>
+								<label for='topContent' class='col-sm-2 control-label'>头条概要</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='topContent' id='topContent'
+										th:value='${obj.topContent}' />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-sm-offset-10 col-sm-2">
+									<input type="submit" class="btn btn-success" value="保存" />
+								</div>
+							</div>
+						</form>
+
+
+
+
+					</div>
+					<!-- /.blog-main -->
+
+
+				</div>
+				<!-- /.row -->
+
+			</div>
+			<!-- /.container -->
+
+		</div>
+	</div>
+</body>
+<script th:inline="javascript">
+	initCategory();
+	initDepartment();
+	$("#categoryId").change(function() {
+		initCategory2($("#categoryId").val());
+	});
+	
+</script>
+
+
+</html>

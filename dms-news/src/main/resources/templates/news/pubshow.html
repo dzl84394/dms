@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="index::head">
+
+</head>
+
+<body role="document">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="index::header"></nav>
+
+	<input type="hidden" id="currentObjId" th:value="${obj.id}" />
+
+
+
+	<div class="container-fluid">
+
+
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar" th:include="news/sidebar::sidebar"></div>
+
+
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+				<div class="blog-post">
+					<h2 class="blog-post-title">News 详情</h2>
+					<hr />
+
+					<div>
+						<span class='label label-default'>id</span>
+						<p th:text='${obj.id}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>categoryId</span>
+						<p th:text='${obj.categoryId}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>title</span>
+						<p th:text='${obj.title}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>bottomTitle</span>
+						<p th:text='${obj.bottomTitle}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>upTitle</span>
+						<p th:text='${obj.upTitle}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>作者</span>
+						<p th:text='${obj.authorName}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>摄影</span>
+						<p th:text='${obj.cameramanName}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>落款部门</span>
+						<p th:text='${obj.departmentName}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>所属部门</span>
+						<p th:text='${obj.departmentId}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>body</span>
+						<p th:text='${obj.body}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>关键字</span>
+						<p th:text='${obj.keywords}'></p>
+					</div>
+					
+					<div>
+						<span class='label label-default'>编者</span>
+						<p th:text='${obj.writerName}'></p>
+					</div>
+				
+					<div>
+						<span class='label label-default'>审核者</span>
+						<p th:text='${obj.postName}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>状态</span>
+						<p th:text='${obj.status}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>锁定</span>
+						<p th:text='${obj.lock}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>拒绝次数</span>
+						<p th:text='${obj.tobackCount}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>点击次数</span>
+						<p th:text='${obj.hits}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>展示次数</span>
+						<p th:text='${obj.pubHits}'></p>
+					</div>
+
+					<div>
+						<span class='label label-default'>引用网站</span>
+						<p th:text='${obj.pubWhere}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>引用Url</span>
+						<p th:text='${obj.pubUrl}'></p>
+					</div>
+
+					<div>
+						<span class='label label-default'>新增时间</span>
+						<p th:text='${obj.createdAt}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>最后时间</span>
+						<p th:text='${obj.updatedAt}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>发布时间</span>
+						<p th:text='${obj.pubTime}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>英语新闻</span>
+						<p th:text='${obj.onEnglish}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>要问</span>
+						<p th:text='${obj.onImportantNews}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>首页</span>
+						<p th:text='${obj.onIndex}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>头条</span>
+						<p th:text='${obj.onTop}'></p>
+					</div>
+
+					<div>
+						<span class='label label-default'>排序</span>
+						<p th:text='${obj.orders}'></p>
+					</div>
+
+				
+
+					<div>
+						<span class='label label-default'>头条简介</span>
+						<p th:text='${obj.topContent}'></p>
+					</div>
+
+
+				</div>
+				<!-- blog-post -->
+				<div class="form-group">
+					<div class="col-sm-offset-5 col-sm-7">
+						<a type="button" class="btn btn-success" th:href="@{'/news/index'}">返回列表</a>
+						<span th:if="${obj.status}=='待审核'">
+							<a type="button" class="btn btn-info" th:href="@{'/news/approved?id='+${obj.id}}">审核通过</a>
+							<a type="button" class="btn btn-info" th:href="@{'/news/deniedEdit?id='+${obj.id}}">审核不通过</a>
+						</span>
+
+						<span th:if="${obj.lock}=='0'">
+							<a type="button" class="btn btn-danger" th:href="@{'/news/lock?id='+${obj.id}}">锁定</a>
+						</span>
+						<span th:if="${obj.lock}=='1'">
+							<a type="button" class="btn btn-danger" th:href="@{'/news/unLock?id='+${obj.id}}">解锁</a>
+						</span>
+						
+						<a type="button" class="btn btn-info" th:href="@{'/news/pubedit?id='+${obj.id}}">修改</a>
+						
+					</div>
+				</div>
+			</div>
+			<!-- blog-main -->
+		</div>
+		<!-- row -->
+
+
+	</div>
+	<!-- /.container -->
+	<div class="navbar-fixed-bottom blog-footer" th:include="index :: footer"></div>
+</body>
+
+<script th:inline="javascript">
+	
+</script>
+
+</html>

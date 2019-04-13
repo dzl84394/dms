@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="index::head">
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="index::header"></nav>
+
+	<div class="container-fluid">
+
+
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar" th:include="user/sidebar::sidebar"></div>
+
+
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h3>用户组 列表</h3>
+
+				<div class="col-sm-12 col-lg-12" id="list">
+					<table class="span12 table table-striped">
+						<thead>
+
+
+							<tr>
+								<td>id</td>
+								<td>name</td>
+
+
+							</tr>
+						</thead>
+						<tbody>
+							<div class="" th:each="s : ${objs}">
+
+								<tr>
+									<td th:text='${s.id}'></td>
+									<td th:text='${s.name}'></td>
+									<td th:text='${s.createdAt}'></td>
+									<td th:text='${s.updatedAt}'></td>
+
+
+									<td>
+										<a class="btn btn-primary btn-sm" th:href="@{'/item/show/'+${s.id}}">展示</a>
+										<a class="btn btn-success btn-sm" th:href="@{'/item/edit?id='+${s.id}}">编辑</a>
+										<a class="btn btn-info btn-sm" th:href="@{'/item/authorize?id='+${s.id}}">授权</a>
+										<a class="btn btn-danger btn-sm"
+											th:onclick="'javascript:deleteContact(\'/item/delete?id='+${s.id}+'\',\'确认删除么，江删除全部相关信息\')'">删除</a>
+									</td>
+								</tr>
+							</div>
+						</tbody>
+					</table>
+
+				</div>
+
+				<nav>
+					<ul class="pager">
+						<li><a th:href="@{/item/add}">新增</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+
+	</div>
+	<!-- /.container -->
+
+	<div class="blog-footer navbar-fixed-bottom" th:include="index :: footer"></div>
+
+
+</body>
+<script th:inline="javascript">
+	$(document).ready(function() {
+
+	})
+</script>
+</html>

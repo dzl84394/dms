@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="index::head">
+
+</head>
+
+<body role="document">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="index::header"></nav>
+
+
+	<div class="container-fluid">
+
+
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar" th:include="news/sidebar::sidebar"></div>
+
+
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+				<div class="blog-header">
+					<h3 class="blog-title">讲座 添加</h3>
+				</div>
+
+				<div class="row">
+
+					<div th:fragment="lectureForm">
+
+						<form id="lectureForm" th:action="@{/lecture/save}" th:method="post" th:object="${obj}"
+							class="form-horizontal">
+							<input type="hidden" class="form-control" name="id" id="id" th:value="${obj.id}" />
+
+
+
+
+							<div class='form-group col-lg-6'>
+								<label for='place' class='col-sm-2 control-label'>地址</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='place' id='place' th:value='${obj.place}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-6'>
+								<label for='reporter' class='col-sm-2 control-label'>报告人</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='reporter' id='reporter'
+										th:value='${obj.reporter}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-6'>
+								<label for='time' class='col-sm-2 control-label'>时间</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='time' id='time' th:value='${obj.time}' />
+								</div>
+							</div>
+
+							<div class='form-group col-lg-6'>
+								<label for='toUser' class='col-sm-2 control-label'>受众</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='toUser' id='toUser' th:value='${obj.toUser}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-6'>
+								<label for='departmentName' class='col-sm-2 control-label'>落款</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='departmentName' id='departmentName'
+										th:value='${obj.departmentName}' />
+								</div>
+							</div>
+
+
+							<div class='form-group col-lg-6'>
+								<label for='departmentId' class='col-sm-2 control-label'>归属单位</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='departmentId' id='departmentId'
+										th:value='${obj.departmentId}' />
+								</div>
+							</div>
+
+							<div class='form-group col-lg-12'>
+								<label for='title' class='col-sm-2 control-label'>标题</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='title' id='title' th:value='${obj.title}' />
+								</div>
+							</div>
+
+							<div class='form-group col-lg-12'>
+								<label for='body' class='col-sm-2 control-label'>正文</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='body' id='body' th:value='${obj.body}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='note' class='col-sm-2 control-label'>备注</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='note' id='note' th:value='${obj.note}' />
+								</div>
+							</div>
+
+
+
+							<div class="form-group">
+								<div class="col-sm-offset-10 col-sm-2">
+									<input type="submit" class="btn btn-success" value="保存" />
+								</div>
+							</div>
+						</form>
+
+
+
+
+					</div>
+					<!-- /.blog-main -->
+
+
+				</div>
+				<!-- /.row -->
+
+			</div>
+			<!-- /.container -->
+
+		</div>
+	</div>
+</body>
+<script th:inline="javascript">
+	
+</script>
+
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="index::head">
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="index::header"></nav>
+
+	<div class="container-fluid">
+
+
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar" th:include="news/sidebar::sidebar"></div>
+
+
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+				<h3>新闻 列表</h3>
+
+				<div class="col-sm-12 col-lg-12" id="list">
+					<table class="span12 table table-striped">
+						<thead>
+
+
+							<tr>
+								<td>id</td>
+								<td>标题</td>
+								<td>状态</td>
+								<td>排序</td>
+								<td>操作</td>
+
+							</tr>
+						</thead>
+						<tbody>
+							<div class="" th:each="s : ${objs}">
+
+								<tr>
+									<td th:text='${s.id}'></td>
+									<td th:text='${s.title}'></td>
+									<td th:text='${s.status}'></td>
+									<td th:text='${s.orders}'></td>
+									<td>
+										<a class="btn btn-primary btn-sm" th:href="@{'/news/show/'+${s.id}}">展示</a>
+										<a class="btn btn-primary btn-sm" th:href="@{'/news/edit?id='+${s.id}}">编辑</a>
+										<span th:if="${s.status}!='草稿'">
+											<a class="btn btn-success btn-sm" th:href="@{'/news/up?id='+${s.id}}">
+												<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+											</a>
+											<a class="btn btn-danger btn-sm" th:href="@{'/news/down?id='+${s.id}}">
+												<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+											</a>
+										</span>
+									</td>
+								</tr>
+							</div>
+						</tbody>
+					</table>
+
+				</div>
+
+				<nav>
+					<ul class="pager">
+						<li><a th:href="@{/news/add}">新增</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+
+	</div>
+	<!-- /.container -->
+
+
+
+</body>
+<script th:inline="javascript">
+	$(document).ready(function() {
+
+	})
+</script>
+</html>

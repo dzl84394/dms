@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="index::head">
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="index::header"></nav>
+
+	<div class="container-fluid">
+
+
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar" th:include="news/sidebar::sidebar"></div>
+
+
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+				<h3>新闻 列表</h3>
+
+				<div class="col-lg-12 col-lg-12" id="list">
+					<div class="form-horizontal">
+
+
+
+
+						<div class='form-group col-lg-3'>
+							<label for='categoryId' class='col-lg-4 control-label'>类别</label>
+							<div class='col-lg-8'>
+								<select id="categoryId" class="form-control" name="categoryId">
+								</select>
+							</div>
+						</div>
+						<div class='form-group col-lg-3'>
+							<div class='col-lg-8'>
+								<select id="category2Id" class="form-control" name="category2Id">
+								</select>
+							</div>
+
+						</div>
+
+
+						<div class='form-group col-lg-3'>
+							<label for='departmentId' class='col-lg-4 control-label'>单位</label>
+							<div class='col-lg-8'>
+								<select id="departmentId" class="form-control" name="departmentId">
+								</select>
+
+							</div>
+						</div>
+
+						<div class='form-group col-lg-3'>
+							<label for='departmentId' class='col-lg-4 control-label'>状态</label>
+							<div class='col-lg-8'>
+								<select id="status" class="form-control" name="status">
+									<option value='0'>全部</option>
+									<option value='草稿'>草稿</option>
+									<option value='待审核'>待审核</option>
+									<option value='发布'>发布</option>
+								</select>
+
+							</div>
+						</div>
+
+						<div class='form-group col-lg-3'>
+							<label for='id' class='col-lg-4 control-label'>id</label>
+							<div class='col-lg-8'>
+								<input type='text' class='form-control' name='id' id='id' />
+							</div>
+						</div>
+						<div class='form-group col-lg-3'>
+							<label for='writerName' class='col-lg-4 control-label'>作者</label>
+							<div class='col-lg-8'>
+								<input type='text' class='form-control' name='writerName' id='writerName' />
+							</div>
+						</div>
+						<div class='form-group col-lg-3'>
+							<label for='title' class='col-lg-4 control-label'>标题</label>
+							<div class='col-lg-8'>
+								<input type='text' class='form-control' name='title' id='title' />
+							</div>
+						</div>
+						<div class='form-group col-lg-3'>
+							<label for='authorName' class='col-lg-4 control-label'>时间</label>
+							<div class='col-lg-8'>
+								<input type='text' class='form-control' name='id' id='id' />
+							</div>
+						</div>
+
+
+						<div class='form-group col-lg-12'>
+							<div class="col-lg-3">
+								<div class="checkbox">
+									<label> <input type="checkbox" name='onEnglish' id='onEnglish' /> 是否被锁定
+									</label>
+								</div>
+							</div>
+
+
+							<div class="col-lg-3">
+								<div class="checkbox">
+									<label> <input type="checkbox" name='onEnglish' id='onEnglish' /> 是否是英文
+									</label>
+								</div>
+							</div>
+							<div class="col-lg-3">
+								<div class="checkbox">
+									<label> <input type="checkbox" name='onImportantNews' id='onImportantNews' />
+										是否是要闻
+									</label>
+								</div>
+							</div>
+
+							<div class="col-lg-3">
+								<div class="checkbox">
+									<label> <input type="checkbox" name='onIndex' id='onIndex' /> 是否首页
+									</label>
+								</div>
+							</div>
+							<div class="col-lg-3">
+								<div class="checkbox">
+									<label> <input type="checkbox" name='onTop' id='onTop' /> 是否头条
+									</label>
+								</div>
+							</div>
+							<div class="col-lg-3">
+								<div class="checkbox">
+									<label> <input type="checkbox" name='onTop' id='onTop' /> 是否只看我的
+									</label>
+								</div>
+							</div>
+						</div>
+
+						<a class="btn btn-primary btn-sm" th:onclick="'javascript:getAll()'">刷新</a>
+					</div>
+					<table class="span12 table table-striped">
+						<thead>
+							<tr>
+								<td>id</td>
+								<td>标题</td>
+								<td>状态</td>
+								<td></td>
+							</tr>
+						</thead>
+						<tbody id="trsDiv">
+
+						</tbody>
+					</table>
+					<!-- 列表分页的DIV,由JS动态填充内容-->
+					<p id="pagination_page" class="row"></p>
+				</div>
+
+				<nav>
+					<ul class="pager">
+						<li><a th:href="@{/news/add}">新增</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+
+	</div>
+	<!-- /.container -->
+
+
+
+</body>
+<script th:inline="javascript">
+	initCategory();
+	initCategory2(7);
+	initDepartment();
+	$("#categoryId").change(function() {
+		initCategory2($("#categoryId").val());
+	});
+
+/* 	$('#pagination_page').pagination({
+		totalPages : 11,
+		totalNumber : 55,
+		size : 5,
+		currentPage : 5,
+		onPageChange : function(num, type) {
+			$('#text').html('当前第' + num + '页');
+		}
+	}); */
+
+	/*  pagination(200,10,10); */
+	function getAll(currentPage) {
+		if(currentPage==-1){
+			currentPage =  $("#paginationGo").val()-1;
+		}
+		
+		var trsObj = $("#trsDiv");
+		$("#trsDiv tr").remove();
+
+		$
+				.ajax({
+					type : "get",
+					url : "/news/allObj",
+					data : {
+						categoryId : $("#categoryId").val(),
+						category2Id : $("#category2Id").val(),
+						departmentId : $("#departmentId").val(),
+						status : $("#status").val(),
+						id : $("#id").val(),
+						writerName : $("#writerName").val(),
+						title: $("#title").val(),
+						currentPage:currentPage,
+						pageSize:5
+					},
+					async : false,
+					success : function(data) {
+
+						/*<![CDATA[*/
+						var text = data.content;
+						for (var i = 0; i < text.length; i++) {
+							var index = text[i];
+							var tr = "<tr><td>"
+									+ index.id
+									+ "</td><td>"
+									+ index.title
+									+ "</td><td>"
+									+ index.status
+									+ "</td>   <td><a class='btn btn-primary btn-sm' href='/news/show/"+index.id+"'>展示</a>";
+
+							if (index.status == '草稿') {
+								tr += "<a class='btn btn-primary btn-sm' href='/news/edit?id="
+										+ index.id + "'>编辑</a>";
+							}
+							tr += "</td></tr>";
+
+							trsObj.append(tr);
+						}
+
+						
+						$('#pagination_page').pagination({
+							totalPages : data.totalPages,
+							totalNumber :data.totalElements,
+							size : data.size,
+							currentPage : data.number
+						});
+						
+						
+						/*]]>*/
+
+					}
+				})
+
+	}
+	
+	getAll(0);
+</script>
+</html>

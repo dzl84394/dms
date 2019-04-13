@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="index::head">
+
+</head>
+
+<body role="document">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="index::header"></nav>
+
+	<input type="hidden" id="currentObjId" th:value="${obj.id}" />
+
+
+
+	<div class="container">
+
+
+		<div class="row">
+
+			<div class="col-sm-9 blog-main">
+
+				<div class="blog-post">
+					<h2 class="blog-post-title">NewsLog show</h2>
+					<hr />
+
+						<div>  
+		<span class='label label-default'>id</span> 
+ <p th:text='${obj.id}'></p>	</div> 
+	<div>  
+		<span class='label label-default'>dtype</span> 
+ <p th:text='${obj.dtype}'></p>	</div> 
+	<div>  
+		<span class='label label-default'>objId</span> 
+ <p th:text='${obj.objId}'></p>	</div> 
+	<div>  
+		<span class='label label-default'>userId</span> 
+ <p th:text='${obj.userId}'></p>	</div> 
+	<div>  
+		<span class='label label-default'>action</span> 
+ <p th:text='${obj.action}'></p>	</div> 
+	<div>  
+		<span class='label label-default'>note</span> 
+ <p th:text='${obj.note}'></p>	</div> 
+	<div>  
+		<span class='label label-default'>createdAt</span> 
+ <p th:text='${obj.createdAt}'></p>	</div> 
+
+
+				</div>
+				<!-- blog-post -->
+				<div class="form-group">
+					<div class="col-sm-offset-8 col-sm-4">
+						<a type="button" class="btn btn-success" th:href="@{'/newsLog/index'}">返回列表</a>
+						<a type="button" class="btn btn-info" th:href="@{'/newsLog/edit?id='+${obj.id}}">编辑</a>
+
+					</div>
+				</div>
+			</div>
+			<!-- blog-main -->
+		</div>
+		<!-- row -->
+
+
+	</div>
+	<!-- /.container -->
+	<div class="navbar-fixed-bottom blog-footer" th:include="index :: footer"></div>
+</body>
+
+<script th:inline="javascript">
+	
+</script>
+
+</html>

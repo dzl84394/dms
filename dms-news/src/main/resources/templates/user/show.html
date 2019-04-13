@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="index::head">
+
+</head>
+
+<body role="document">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="index::header"></nav>
+
+	<input type="hidden" id="currentObjId" th:value="${obj.id}" />
+
+
+
+	<div class="container-fluid">
+
+
+
+		<div class="row">
+
+			<div class="col-sm-3 col-md-2 sidebar" th:include="user/sidebar::sidebar"></div>
+
+
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+				<div class="blog-post">
+					<h2 class="blog-post-title">SUser show</h2>
+					<hr />
+
+					<div>
+						<span class='label label-default'>id</span>
+						<p th:text='${obj.id}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>item</span>
+						<p th:text='${obj.item}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>department</span>
+						<p th:text='${obj.department}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>permissions</span>
+						<p th:text='${obj.permissions}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>email</span>
+						<p th:text='${obj.email}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>login</span>
+						<p th:text='${obj.login}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>username</span>
+						<p th:text='${obj.username}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>password</span>
+						<p th:text='${obj.password}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>signCount</span>
+						<p th:text='${obj.signCount}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>signErrCount</span>
+						<p th:text='${obj.signErrCount}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>status</span>
+						<p th:text='${obj.status}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>signIn</span>
+						<p th:text='${obj.signIn}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>officePhone</span>
+						<p th:text='${obj.officePhone}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>mobile</span>
+						<p th:text='${obj.mobile}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>createdAt</span>
+						<p th:text='${obj.createdAt}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>updatedAt</span>
+						<p th:text='${obj.updatedAt}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>deletedAt</span>
+						<p th:text='${obj.deletedAt}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>enabled</span>
+						<p th:text='${obj.enabled}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>credentialsNonExpired</span>
+						<p th:text='${obj.credentialsNonExpired}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>accountNonExpired</span>
+						<p th:text='${obj.accountNonExpired}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>accountNonLocked</span>
+						<p th:text='${obj.accountNonLocked}'></p>
+					</div>
+
+
+				</div>
+				<!-- blog-post -->
+				<div class="form-group">
+					<div class="col-sm-offset-8 col-sm-4">
+						<a type="button" class="btn btn-success" th:href="@{'/sUser/index'}">返回列表</a>
+						<a type="button" class="btn btn-info" th:href="@{'/sUser/edit?id='+${obj.id}}">编辑</a>
+
+					</div>
+				</div>
+			</div>
+			<!-- blog-main -->
+		</div>
+		<!-- row -->
+
+
+	</div>
+	<!-- /.container -->
+	<div class="navbar-fixed-bottom blog-footer" th:include="index :: footer"></div>
+</body>
+
+<script th:inline="javascript">
+	
+</script>
+
+</html>

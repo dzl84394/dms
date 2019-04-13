@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="index::head">
+
+</head>
+
+<body role="document">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="index::header"></nav>
+
+	<input type="hidden" id="currentObjId" th:value="${obj.id}" />
+
+
+
+	<div class="container-fluid">
+
+
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar" th:include="news/sidebar::sidebar"></div>
+
+
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+				<div class="blog-post">
+					<h2 class="blog-post-title">News 详情</h2>
+					<hr />
+
+					<div>
+						<span class='label label-default'>id</span>
+						<p th:text='${obj.id}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>categoryId</span>
+						<p th:text='${obj.categoryId}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>title</span>
+						<p th:text='${obj.title}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>bottomTitle</span>
+						<p th:text='${obj.bottomTitle}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>upTitle</span>
+						<p th:text='${obj.upTitle}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>authorName</span>
+						<p th:text='${obj.authorName}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>cameramanName</span>
+						<p th:text='${obj.cameramanName}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>departmentName</span>
+						<p th:text='${obj.departmentName}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>departmentId</span>
+						<p th:text='${obj.departmentId}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>body</span>
+						<p th:text='${obj.body}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>keywords</span>
+						<p th:text='${obj.keywords}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>writerId</span>
+						<p th:text='${obj.writerId}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>writerName</span>
+						<p th:text='${obj.writerName}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>postId</span>
+						<p th:text='${obj.postId}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>postName</span>
+						<p th:text='${obj.postName}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>status</span>
+						<p th:text='${obj.status}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>锁定</span>
+						<p th:text='${obj.lock}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>tobackCount</span>
+						<p th:text='${obj.tobackCount}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>点击次数</span>
+						<p th:text='${obj.hits}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>展示次数</span>
+						<p th:text='${obj.pubHits}'></p>
+					</div>
+
+					<div>
+						<span class='label label-default'>pubWhere</span>
+						<p th:text='${obj.pubWhere}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>pubUrl</span>
+						<p th:text='${obj.pubUrl}'></p>
+					</div>
+
+					<div>
+						<span class='label label-default'>createdAt</span>
+						<p th:text='${obj.createdAt}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>updatedAt</span>
+						<p th:text='${obj.updatedAt}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>pubTime</span>
+						<p th:text='${obj.pubTime}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>onEnglish</span>
+						<p th:text='${obj.onEnglish}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>onImportantNews</span>
+						<p th:text='${obj.onImportantNews}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>onIndex</span>
+						<p th:text='${obj.onIndex}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>onTop</span>
+						<p th:text='${obj.onTop}'></p>
+					</div>
+
+					<div>
+						<span class='label label-default'>orders</span>
+						<p th:text='${obj.orders}'></p>
+					</div>
+
+					<div>
+						<span class='label label-default'>orderIndex</span>
+						<p th:text='${obj.orderIndex}'></p>
+					</div>
+
+					<div>
+						<span class='label label-default'>topContent</span>
+						<p th:text='${obj.topContent}'></p>
+					</div>
+
+
+				</div>
+				<!-- blog-post -->
+				<div class="form-group">
+					<div class="col-sm-offset-5 col-sm-7">
+						<a type="button" class="btn btn-success" th:href="@{'/news/index'}">返回列表</a>
+
+						<span th:if="${obj.status}=='草稿'">
+							<a type="button" class="btn btn-info" th:href="@{'/news/edit?id='+${obj.id}}">编辑</a>
+
+							<a type="button" class="btn btn-info" th:href="@{'/news/submit?id='+${obj.id}}">送审</a>
+						</span>
+					</div>
+				</div>
+			</div>
+			<!-- blog-main -->
+		</div>
+		<!-- row -->
+
+
+	</div>
+	<!-- /.container -->
+	<div class="navbar-fixed-bottom blog-footer" th:include="index :: footer"></div>
+</body>
+
+<script th:inline="javascript">
+	
+</script>
+
+</html>

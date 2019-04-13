@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="index::head">
+
+</head>
+
+<body role="document">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="index::header"></nav>
+
+
+	<div class="container-fluid">
+
+
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar" th:include="user/sidebar::sidebar"></div>
+
+
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+
+				<div class="blog-header">
+					<h3 class="blog-title">department 添加</h3>
+				</div>
+
+				<div class="row">
+
+					<div th:fragment="departmentForm">
+
+						<form id="departmentForm" th:action="@{/department/save}" th:method="post" th:object="${obj}"
+							class="form-horizontal">
+							<input type="hidden" class="form-control" name="id" id="id" th:value="${obj.id}" />
+							<div class='form-group col-lg-12'>
+								<label for='name' class='col-sm-2 control-label'>name</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='name' id='name' th:value='${obj.name}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='shortName' class='col-sm-2 control-label'>shortName</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='shortName' id='shortName'
+										th:value='${obj.shortName}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='contactUser' class='col-sm-2 control-label'>联系人</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='contactUser' id='contactUser'
+										th:value='${obj.contactUser}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='contactPhone' class='col-sm-2 control-label'>联系电话</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='contactPhone' id='contactPhone'
+										th:value='${obj.contactPhone}' />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-sm-offset-10 col-sm-2">
+									<input type="submit" class="btn btn-success" value="保存" />
+								</div>
+							</div>
+						</form>
+
+
+
+
+					</div>
+					<!-- /.blog-main -->
+
+
+				</div>
+				<!-- /.row -->
+
+			</div>
+			<!-- /.container -->
+		</div>
+	</div>
+</body>
+<script th:inline="javascript">
+	
+</script>
+
+
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="index::head">
+
+</head>
+
+<body role="document">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="index::header"></nav>
+
+	<input type="hidden" id="currentObjId" th:value="${obj.id}" />
+
+
+
+	<div class="container-fluid">
+
+
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar" th:include="news/sidebar::sidebar"></div>
+
+
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+				<div class="blog-post">
+					<h2 class="blog-post-title"> show</h2>
+					<hr />
+
+					<div>
+						<span class='label label-default'>id</span>
+						<p th:text='${obj.id}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>dtype</span>
+						<p th:text='${obj.dtype}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>title</span>
+						<p th:text='${obj.title}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>place</span>
+						<p th:text='${obj.place}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>reporter</span>
+						<p th:text='${obj.reporter}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>time</span>
+						<p th:text='${obj.time}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>body</span>
+						<p th:text='${obj.body}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>note</span>
+						<p th:text='${obj.note}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>lock</span>
+						<p th:text='${obj.lock}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>status</span>
+						<p th:text='${obj.status}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>createdAt</span>
+						<p th:text='${obj.createdAt}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>updatedAt</span>
+						<p th:text='${obj.updatedAt}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>pubtime</span>
+						<p th:text='${obj.pubtime}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>hits</span>
+						<p th:text='${obj.hits}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>tobackCount</span>
+						<p th:text='${obj.tobackCount}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>writer</span>
+						<p th:text='${obj.writer}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>postby</span>
+						<p th:text='${obj.postby}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>departmentId</span>
+						<p th:text='${obj.departmentId}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>departmentName</span>
+						<p th:text='${obj.departmentName}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>orders</span>
+						<p th:text='${obj.orders}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>onIndex</span>
+						<p th:text='${obj.onIndex}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>orderIndex</span>
+						<p th:text='${obj.orderIndex}'></p>
+					</div>
+					<div>
+						<span class='label label-default'>isSecret</span>
+						<p th:text='${obj.isSecret}'></p>
+					</div>
+
+
+				</div>
+				<!-- blog-post -->
+				<div class="form-group">
+					<div class="col-sm-offset-8 col-sm-4">
+						<a type="button" class="btn btn-success" th:href="@{'/lecture/index'}">返回列表</a>
+						<a type="button" class="btn btn-info" th:href="@{'/lecture/edit?id='+${obj.id}}">编辑</a>
+
+					</div>
+				</div>
+			</div>
+			<!-- blog-main -->
+		</div>
+		<!-- row -->
+
+
+	</div>
+	<!-- /.container -->
+</body>
+
+<script th:inline="javascript">
+	
+</script>
+
+</html>

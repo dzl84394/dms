@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="index::head">
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="index::header"></nav>
+
+	<div class="container-fluid">
+
+
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar" th:include="news/sidebar::sidebar"></div>
+
+
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+				<h3>讲座 列表</h3>
+来稿单位 ，状态， 时间，id，名称
+				<div class="col-sm-12 col-lg-12" id="list">
+					<table class="table table-striped">
+						<thead>
+
+
+							<tr>
+								<td>id</td>
+								<td>title</td>
+							
+
+
+							</tr>
+						</thead>
+						<tbody>
+							<div class="" th:each="s : ${objs}">
+
+								<tr>
+										<td th:text='${s.id}'></td>
+										<td th:text='${s.title}'></td>
+										
+
+									<td>
+										<a class="btn btn-primary btn-sm" th:href="@{'/lecture/show/'+${s.id}}">展示</a>
+										<a class="btn btn-primary btn-sm" th:href="@{'/lecture/edit?id='+${s.id}}">编辑</a>
+										<a class="btn btn-primary btn-sm" th:onclick="'javascript:deleteContact(\'/lecture/delete?id='+${s.id}+'\',\'确认删除么，江删除全部相关信息\')'">删除</a>
+									</td>
+								</tr>
+							</div>
+						</tbody>
+					</table>
+
+				</div>
+
+				<nav>
+					<ul class="pager">
+						<li>
+							<a th:href="@{/lecture/add}">新增</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+
+	</div>
+	<!-- /.container -->
+
+
+
+</body>
+<script th:inline="javascript">
+	$(document).ready(function() {
+
+	})
+</script>
+</html>

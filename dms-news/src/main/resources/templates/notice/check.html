@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="index::head">
+
+</head>
+
+<body role="document">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="index::header"></nav>
+
+
+	<div class="container-fluid">
+
+
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar" th:include="news/sidebar::sidebar"></div>
+
+
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+				<div class="blog-header">
+					<h3 class="blog-title">notice 添加</h3>
+				</div>
+
+				<div class="row">
+
+					<div th:fragment="noticeForm">
+
+						<form id="noticeForm" th:action="@{/notice/save}" th:method="post" th:object="${obj}"
+							class="form-horizontal">
+							<input type="hidden" class="form-control" name="id" id="id" th:value="${obj.id}" />
+							<div class='form-group col-lg-12'>
+								<label for='dtype' class='col-sm-2 control-label'>类型</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='dtype' id='dtype' th:value='${obj.dtype}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='title' class='col-sm-2 control-label'>标题</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='title' id='title' th:value='${obj.title}' />
+								</div>
+							</div>
+						
+							<div class='form-group col-lg-12'>
+								<label for='body' class='col-sm-2 control-label'>正文</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='body' id='body' th:value='${obj.body}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='note' class='col-sm-2 control-label'>备注</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='note' id='note' th:value='${obj.note}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='lock' class='col-sm-2 control-label'>lock</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='lock' id='lock' th:value='${obj.lock}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='status' class='col-sm-2 control-label'>status</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='status' id='status' th:value='${obj.status}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='createdAt' class='col-sm-2 control-label'>createdAt</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='createdAt' id='createdAt'
+										th:value='${obj.createdAt}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='updatedAt' class='col-sm-2 control-label'>updatedAt</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='updatedAt' id='updatedAt'
+										th:value='${obj.updatedAt}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='pubtime' class='col-sm-2 control-label'>pubtime</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='pubtime' id='pubtime'
+										th:value='${obj.pubtime}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='hits' class='col-sm-2 control-label'>hits</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='hits' id='hits' th:value='${obj.hits}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='tobackCount' class='col-sm-2 control-label'>tobackCount</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='tobackCount' id='tobackCount'
+										th:value='${obj.tobackCount}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='writer' class='col-sm-2 control-label'>writer</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='writer' id='writer' th:value='${obj.writer}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='postby' class='col-sm-2 control-label'>postby</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='postby' id='postby' th:value='${obj.postby}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='departmentId' class='col-sm-2 control-label'>departmentId</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='departmentId' id='departmentId'
+										th:value='${obj.departmentId}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='departmentName' class='col-sm-2 control-label'>departmentName</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='departmentName' id='departmentName'
+										th:value='${obj.departmentName}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='orders' class='col-sm-2 control-label'>orders</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='orders' id='orders' th:value='${obj.orders}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='onIndex' class='col-sm-2 control-label'>onIndex</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='onIndex' id='onIndex'
+										th:value='${obj.onIndex}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='orderIndex' class='col-sm-2 control-label'>orderIndex</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='orderIndex' id='orderIndex'
+										th:value='${obj.orderIndex}' />
+								</div>
+							</div>
+							<div class='form-group col-lg-12'>
+								<label for='isSecret' class='col-sm-2 control-label'>isSecret</label>
+								<div class='col-sm-10'>
+									<input type='text' class='form-control' name='isSecret' id='isSecret'
+										th:value='${obj.isSecret}' />
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-10 col-sm-2">
+									<input type="submit" class="btn btn-success" value="保存" />
+								</div>
+							</div>
+						</form>
+
+
+
+
+					</div>
+					<!-- /.blog-main -->
+
+
+				</div>
+				<!-- /.row -->
+
+			</div>
+			<!-- /.container -->
+
+		</div>
+	</div>
+</body>
+<script th:inline="javascript">
+	
+</script>
+
+
+</html>
